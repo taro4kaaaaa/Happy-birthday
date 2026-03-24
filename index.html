@@ -633,6 +633,36 @@
         document.getElementById('grid').addEventListener('mouseover', handleCellMouseEnter);
         document.addEventListener('mouseup', handleMouseUp);
 
+        document.getElementById('grid').addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const cell = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (cell && cell.classList.contains('cell')) {
+                isSelecting = true;
+                selectedCells = [];
+                const row = parseInt(cell.dataset.row);
+                const col = parseInt(cell.dataset.col);
+                selectCell(row, col);
+            }
+        }, { passive: false });
+
+        document.getElementById('grid').addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (!isSelecting) return;
+            const touch = e.touches[0];
+            const cell = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (cell && cell.classList.contains('cell')) {
+                const row = parseInt(cell.dataset.row);
+                const col = parseInt(cell.dataset.col);
+                handleCellMouseEnter({ target: cell });
+                if (!selectedCells.some(c => c.row === row && c.col === col)) {
+                    selectCell(row, col);
+                }
+            }
+        }, { passive: false });
+
+        document.addEventListener('touchend', handleMouseUp);
+
         document.getElementById('phrase1').classList.add('hidden');
         document.getElementById('phrase2').classList.add('hidden');
 
