@@ -285,7 +285,7 @@
                     <div class="words-list">
                         <span class="word-item" data-word="HAPPY">HAPPY</span> 
                         <span class="word-item" data-word="BIRTHDAY">BIRTHDAY</span> 
-                        <span class="word-item" data-word="STASY">STASY</span>
+                        <span class="word-item" data-word="STACY">STACY</span>
                     </div>
                 </div>
             </div>
@@ -298,7 +298,7 @@
 
     <script>
         const PHRASE1_WORDS = ['SORRY', 'I', 'WAS', 'LATE'];
-        const PHRASE2_WORDS = ['HAPPY', 'BIRTHDAY', 'STASY'];
+        const PHRASE2_WORDS = ['HAPPY', 'BIRTHDAY', 'STACY'];
         const GRID_SIZE = 15;
 
         let grid = [];
@@ -320,13 +320,13 @@
         function placeWords() {
             const allWords = [...PHRASE1_WORDS, ...PHRASE2_WORDS];
             
-            const stasyIndex = allWords.indexOf('STASY');
+            const stasyIndex = allWords.indexOf('STACY');
             if (stasyIndex > -1) {
-                placeWordDiagonal('STASY', 2);
+                placeWordDiagonal('STACY', 2);
             }
             
             allWords.forEach(word => {
-                if (word === 'STASY') return;
+                if (word === 'STACY') return;
                 
                 const phrase = PHRASE1_WORDS.includes(word) ? 1 : 2;
                 let placed = false;
