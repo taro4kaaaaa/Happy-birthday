@@ -9,7 +9,7 @@ on:
       - master
 
 env:
-  IMAGE_NAME: taro4ka/happy-b
+  IMAGE_NAME: k0nstantinnn/happy-b
   IMAGE_TAG: ${{ github.sha }}
 
 jobs:
